@@ -1,51 +1,28 @@
-radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == 1) {
-        basic.showLeds(`
-            . . # . .
-            . # . . .
-            # . . . .
-            . # . . .
-            . . # . .
-            `)
-    } else if (receivedNumber == 2) {
-        basic.showLeds(`
-            . . # . .
-            . . . # .
-            . . . . #
-            . . . # .
-            . . # . .
-            `)
-    }
-})
 input.onGesture(Gesture.TiltLeft, function () {
-    basic.showLeds(`
-        . . # . .
-        . # . . .
-        # . . . .
-        . # . . .
-        . . # . .
-        `)
-    radio.sendNumber(1)
+    radio.sendString("Left")
+    basic.showArrow(ArrowNames.West)
 })
-input.onGesture(Gesture.Shake, function () {
+input.onButtonPressed(Button.AB, function () {
+    radio.sendString("Stop")
     basic.showLeds(`
-        . . . . .
+        # . . . #
+        . # . # .
         . . # . .
         . # . # .
         # . . . #
-        . . . . .
         `)
-    radio.sendNumber(3)
+})
+input.onGesture(Gesture.Shake, function () {
+    radio.sendString("Starjump")
+    basic.showIcon(IconNames.StickFigure)
 })
 input.onGesture(Gesture.TiltRight, function () {
-    basic.showLeds(`
-        . . # . .
-        . . . # .
-        . . . . #
-        . . . # .
-        . . # . .
-        `)
-    radio.sendNumber(2)
+    radio.sendString("Right")
+    basic.showArrow(ArrowNames.East)
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    radio.sendString("Forwards")
+    basic.showArrow(ArrowNames.North)
 })
 radio.setGroup(55)
 basic.showIcon(IconNames.Heart)
