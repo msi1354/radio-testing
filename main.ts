@@ -24,5 +24,6 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     radio.sendString("Forwards")
     basic.showArrow(ArrowNames.North)
 })
+basic.clearScreen()
 radio.setGroup(55)
 basic.showIcon(IconNames.Heart)
